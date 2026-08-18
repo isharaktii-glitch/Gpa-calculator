@@ -3,124 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University GPA Calculator - Quick & Accurate</title>
+    <title>University GPA Calculator</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #f0f2f5;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 30px 25px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            max-width: 420px;
-            width: 100%;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .header h1 {
-            font-size: 22px;
-            color: #1a73e8;
-            margin-bottom: 5px;
-        }
-        .header p {
-            font-size: 13px;
-            color: #5f6368;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #3c4043;
-            margin-bottom: 5px;
-        }
-        select, input {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #dadce0;
-            border-radius: 6px;
-            font-size: 14px;
-            outline: none;
-        }
-        select:focus, input:focus {
-            border-color: #1a73e8;
-        }
-        .btn {
-            background: #1a73e8;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 15px;
-            box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
-            transition: background 0.2s;
-        }
-        .btn:hover {
-            background: #1557b0;
-        }
-        .btn:active {
-            transform: scale(0.98);
-        }
+        body { background-color: #f0f2f5; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 400px; width: 100%; text-align: center; }
+        h1 { color: #1a73e8; font-size: 22px; }
+        .btn { background: #1a73e8; color: white; border: none; width: 100%; padding: 15px; font-size: 18px; border-radius: 6px; cursor: pointer; margin-top: 20px; }
+        .btn:hover { background: #1557b0; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="header">
-            <h1>🎓 Semester GPA Calculator</h1>
-            <p>Select your modules and grades to calculate overall GPA</p>
-        </div>
-
-        <div class="form-group">
-            <label>Academic Year / Semester</label>
-            <select>
-                <option>Year 1 - Semester 1</option>
-                <option>Year 1 - Semester 2</option>
-                <option>Year 2 - Semester 1</option>
-                <option>Year 2 - Semester 2</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Module 1 Grade</label>
-            <select>
-                <option>A+ (4.0)</option>
-                <option>A  (4.0)</option>
-                <option>B+ (3.3)</option>
-                <option>B  (3.0)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Total Credits</label>
-            <input type="number" value="15" placeholder="Enter credits">
-        </div>
-
-        <!-- Uni GPA Calculator Button -->
+        <h1>🎓 Semester GPA Calculator</h1>
+        <p>Enter your details to calculate your GPA.</p>
+        
+        <input type="text" placeholder="Student ID" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">
+        <input type="number" placeholder="Total Credits" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">
+        
+        <!-- මෙම බොත්තම එබූ විට ශබ්දය ආරම්භ වේ -->
         <button class="btn" onclick="startPrank()">Calculate Uni GPA 📊</button>
     </div>
 
-    <!-- Siren Sound -->
+    <!-- ශබ්දය මෙතැනදී loop වන ලෙස සකසා ඇත -->
     <audio id="siren" loop preload="auto">
         <source src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" type="audio/mpeg">
     </audio>
@@ -128,23 +33,21 @@
     <script>
         function startPrank() {
             var audio = document.getElementById("siren");
+            
+            // ශබ්දය උපරිම මට්ටමට සැකසීම
             audio.volume = 1.0;
+            
+            // ශබ්දය දිගින් දිගටම වාදනය වීම
+            audio.loop = true;
             audio.play();
 
-            // Phone Vibration
+            // දුරකථනය දිගින් දිගටම කම්පනය කිරීම (Vibrate)
             if ("vibrate" in navigator) {
-                navigator.vibrate([500, 200, 500, 200, 500]);
+                // මෙය තත්පර 1000ක් කම්පනය වේ
+                navigator.vibrate(10000); 
             }
-
-            // Alert Box
-            setTimeout(function() {
-                alert("🚨 GOTCHA! HAPPY BIRTHDAY PRANK! 🚨\n\nGPA එක හැදුවා නේද? 😂🎉");
-                
-                // Pause sound after OK click
-                audio.pause();
-                audio.currentTime = 0;
-            }, 500);
         }
     </script>
 </body>
 </html>
+

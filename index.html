@@ -3,63 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University GPA Calculator - Fast & Easy</title>
+    <title>University GPA Calculator</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #f0f2f5; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .container { background: #ffffff; border-radius: 12px; padding: 25px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); max-width: 400px; width: 100%; text-align: center; }
-        .header { margin-bottom: 20px; }
-        .header h1 { font-size: 22px; color: #1a73e8; margin-bottom: 5px; }
-        .form-group { margin-bottom: 15px; text-align: left; }
-        label { display: block; font-size: 13px; font-weight: 600; color: #3c4043; margin-bottom: 6px; }
-        select { width: 100%; padding: 12px; border: 1px solid #dadce0; border-radius: 8px; font-size: 14px; background-color: #f8f9fa; cursor: pointer; }
-        .btn { background: #1a73e8; color: white; border: none; width: 100%; padding: 16px; font-size: 17px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3); }
-        .btn:hover { background: #1557b0; }
+        .container { background: #ffffff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); max-width: 400px; width: 100%; text-align: center; }
+        h1 { color: #1a73e8; font-size: 22px; margin-bottom: 20px; }
+        select { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .btn { background: #d32f2f; color: white; border: none; width: 100%; padding: 16px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="header">
-            <h1>🎓 Semester GPA Calculator</h1>
-        </div>
-
-        <div class="form-group">
-            <label>Select Semester</label>
-            <select>
-                <option>Year 2 - Semester 2</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Average Grade</label>
-            <select>
-                <option>A+ / A (4.00)</option>
-            </select>
-        </div>
-
+        <h1>🎓 Semester GPA Calculator</h1>
+        <select>
+            <option>Year 2 - Semester 2</option>
+        </select>
         <button class="btn" onclick="startPrank()">Calculate Uni GPA 📊</button>
     </div>
 
-    <!-- Baby Crying Sound -->
-    <audio id="prankSound" loop preload="auto">
-        <source src="https://assets.mixkit.co/active_storage/sfx/265/265-preview.mp3" type="audio/mpeg">
+    <!-- Siren Sound -->
+    <audio id="sirenSound" loop preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         function startPrank() {
-            var audio = document.getElementById("prankSound");
+            var audio = document.getElementById("sirenSound");
             
-            // ශබ්දය ප්ලේ කිරීම
+            // Volume එක උපරිම කිරීම
             audio.volume = 1.0;
-            audio.loop = true;
             audio.play();
 
-            // දුරකථනය දිගින් දිගටම කම්පනය කිරීම
+            // Vibrate වීම
             if ("vibrate" in navigator) {
-                navigator.vibrate([1000, 500, 1000, 500, 1000, 500, 1000]);
+                navigator.vibrate([1000, 200, 1000, 200, 1000, 200, 1000]);
             }
         }
     </script>
 </body>
 </html>
+

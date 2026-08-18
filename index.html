@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Have Received a Special Birthday Gift! 🎁</title>
+    <title>University GPA Calculator - Quick & Accurate</title>
     <style>
         * {
             box-sizing: border-box;
@@ -12,70 +12,115 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
+            background-color: #f0f2f5;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
-            text-align: center;
             padding: 20px;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            max-width: 400px;
+        .container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 420px;
             width: 100%;
         }
-        .gift-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            animation: bounce 1.5s infinite;
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
         }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+        .header h1 {
+            font-size: 22px;
+            color: #1a73e8;
+            margin-bottom: 5px;
         }
-        p {
+        .header p {
+            font-size: 13px;
+            color: #5f6368;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #3c4043;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #dadce0;
+            border-radius: 6px;
             font-size: 14px;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            outline: none;
+        }
+        select:focus, input:focus {
+            border-color: #1a73e8;
         }
         .btn {
-            background: #ff4757;
+            background: #1a73e8;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 18px;
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 6px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-            transition: transform 0.2s;
+            margin-top: 15px;
+            box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #1557b0;
         }
         .btn:active {
-            transform: scale(0.95);
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            transform: scale(0.98);
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="gift-icon">🎁</div>
-        <h1>Special Birthday Surprise!</h1>
-        <p>Someone sent you a private birthday surprise gift. Tap below to unlock it!</p>
-        <button class="btn" onclick="startPrank()">UNWRAP GIFT 🎉</button>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Semester GPA Calculator</h1>
+            <p>Select your modules and grades to calculate overall GPA</p>
+        </div>
+
+        <div class="form-group">
+            <label>Academic Year / Semester</label>
+            <select>
+                <option>Year 1 - Semester 1</option>
+                <option>Year 1 - Semester 2</option>
+                <option>Year 2 - Semester 1</option>
+                <option>Year 2 - Semester 2</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Module 1 Grade</label>
+            <select>
+                <option>A+ (4.0)</option>
+                <option>A  (4.0)</option>
+                <option>B+ (3.3)</option>
+                <option>B  (3.0)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Total Credits</label>
+            <input type="number" value="15" placeholder="Enter credits">
+        </div>
+
+        <!-- Uni GPA Calculator Button -->
+        <button class="btn" onclick="startPrank()">Calculate Uni GPA 📊</button>
     </div>
 
-    <!-- Police Siren Audio -->
+    <!-- Siren Sound -->
     <audio id="siren" loop preload="auto">
         <source src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" type="audio/mpeg">
     </audio>
@@ -86,12 +131,19 @@
             audio.volume = 1.0;
             audio.play();
 
-            // Vibration if supported on phone
+            // Phone Vibration
             if ("vibrate" in navigator) {
                 navigator.vibrate([500, 200, 500, 200, 500]);
             }
 
-            alert("🚨 HAPPY BIRTHDAY PRANK! 🚨\n\nGOTCHA! 😂🎉");
+            // Alert Box
+            setTimeout(function() {
+                alert("🚨 GOTCHA! HAPPY BIRTHDAY PRANK! 🚨\n\nGPA එක හැදුවා නේද? 😂🎉");
+                
+                // Pause sound after OK click
+                audio.pause();
+                audio.currentTime = 0;
+            }, 500);
         }
     </script>
 </body>
